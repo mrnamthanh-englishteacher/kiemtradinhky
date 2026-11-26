@@ -1,0 +1,168 @@
+<!DOCTYPE html><html lang="vi"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>English Challenge • 40 câu</title><style>
+body{
+  font-family:Arial;
+  background:linear-gradient(135deg,#ffe6f0,#e0f7fa);
+  margin:0;padding:0;
+}
+
+.container{
+  max-width:900px;
+  margin:30px auto;
+  background:#fff;
+  padding:20px;
+  border-radius:20px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.1);
+}
+
+h1{
+  text-align:center;
+  color:#ff4da6;
+}
+
+.header{
+  text-align:center;
+  margin-bottom:15px;
+}
+
+#username{
+  padding:10px;
+  border-radius:20px;
+  border:1px solid #ccc;
+  width:60%;
+  text-align:center;
+}
+
+#timer{
+  text-align:center;
+  font-size:18px;
+  margin:10px;
+}
+
+.question{
+  background:#f9f9f9;
+  padding:26px;
+  margin:20px 0 16px;
+  border-radius:16px;
+  min-height:260px;
+  box-sizing:border-box;
+}
+.question{display:block}
+.question-text{font-size:19px;font-weight:600;line-height:1.65;margin-bottom:22px;color:#252535}
+.answers label{padding:13px 15px;border:1px solid #e6e3eb;border-radius:12px;background:white;transition:background .15s,border-color .15s}
+.answers label:has(input:checked){background:#fff0f7;border-color:#ff4da6;color:#b42169;font-weight:bold}
+.answers input{accent-color:#ff4da6;margin-right:9px}
+.quiz-progress{display:flex;justify-content:space-between;gap:10px;margin-top:16px;font-weight:bold;color:#80526a}
+.progress-track{background:#f3e6ee;height:9px;border-radius:12px;overflow:hidden;margin-top:10px}
+#progressFill{height:100%;width:0;background:#ff4da6;transition:width .2s}
+.navigation{display:flex;gap:12px;justify-content:space-between}
+.navigation button{margin:5px 0;flex:1;max-width:230px}
+.navigation button:disabled{opacity:.4;cursor:not-allowed}
+#submitBtn{margin-top:18px}
+@media(max-width:600px){.container{margin:10px;padding:15px}.question{padding:17px;min-height:300px}.question-text{font-size:17px}.navigation button{padding:12px 10px}}
+
+.unanswered{
+  border:2px solid red;
+  background:#fff0f0;
+}
+
+.answers label{
+  display:block;
+  margin:5px 0;
+  cursor:pointer;
+}
+
+button{
+  display:block;
+  margin:20px auto;
+  padding:12px 25px;
+  border:none;
+  border-radius:25px;
+  background:#ff4da6;
+  color:#fff;
+  font-size:16px;
+  cursor:pointer;
+}
+
+#result{
+  margin-top:20px;
+}
+
+#leaderboard{
+  margin-top:10px;
+}
+
+.quiz-locked{
+  opacity:0.55;
+  pointer-events:none;
+}
+
+#nameHint{
+  text-align:center;
+  color:#c00000;
+  font-weight:bold;
+  margin-top:8px;
+}
+
+*{box-sizing:border-box}body{color:#252535}.container{max-width:1050px}h1{font-size:clamp(22px,4vw,32px)}.sub{text-align:center;color:#80526a}.top{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:8px;position:sticky;top:0;background:white;z-index:2;padding:8px 0}#timer{font-weight:bold;color:#b42169}.layout{display:grid;grid-template-columns:1fr;gap:18px}.layout.reading{grid-template-columns:1fr 1fr}.passage{background:#fff8fc;border:1px solid #f0d6e5;border-radius:14px;padding:18px;line-height:1.65;max-height:65vh;overflow:auto;white-space:pre-line;font-size:16px}.passage:empty{display:none}.question{margin:0;min-height:0}.answers label{margin:9px 0}.palette{display:grid;grid-template-columns:repeat(10,1fr);gap:5px;margin:12px 0}.palette button{margin:0;padding:8px 0;border-radius:8px;background:#f3e6ee;color:#75465e;font-size:14px}.palette button.done{background:#f8bdd9}.palette button.current{outline:2px solid #b42169}.muted{color:#777;font-size:13px}.hidden{display:none!important}#result{text-align:center}.score{font-size:48px;color:#b42169;font-weight:bold}#start input{display:block;margin:12px auto;width:min(100%,400px);padding:12px;border:1px solid #ccc;border-radius:20px;text-align:center;font-size:16px}.notice{background:#fff5e5;padding:12px;border-radius:10px;font-size:14px}@media(max-width:750px){.layout.reading{grid-template-columns:1fr}.passage{max-height:40vh}.palette{grid-template-columns:repeat(8,1fr)}}
+</style></head><body><main class="container"><h1>✨ KIỂM TRA ĐỊNH KỲ THÁNG 11 ✨</h1><p class="sub">CỐ GẮNG LÀM BÀI CẨN THẬN NGHEN</p><section id="start"><p style="text-align:center">40 câu hỏi • 50 phút • Thang điểm 10</p><input id="username" maxlength="100" placeholder="Nhập họ và tên" autocomplete="off"><input id="className" maxlength="50" placeholder="Lớp (không bắt buộc)"><div class="notice">Đề và phương án được đảo ngẫu nhiên. Sau 3 lần rời tab, bài sẽ tự nộp. Không hiển thị đáp án sau khi nộp. Bạn có thể làm lại với đề được đảo mới. Kết quả được lưu trên trình duyệt và gửi về hệ thống của giáo viên khi nộp bài.</div><button id="startBtn">Bắt đầu làm bài</button></section><section id="exam" class="hidden"><div class="top"><b id="student"></b><span id="timer">50:00</span><span id="switches">Rời tab: 0/3</span></div><div class="quiz-progress"><span id="counter"></span><span id="answered"></span></div><div class="progress-track"><div id="progressFill"></div></div><div id="palette" class="palette"></div><h3 id="part"></h3><div id="layout" class="layout"><article id="passage" class="passage"></article><div class="question"><div id="question" class="question-text"></div><div id="options" class="answers"></div></div></div><div class="navigation"><button id="prev">← Quay lại</button><button id="next">Tiếp theo →</button></div><button id="submit">Nộp bài</button></section><section id="result" class="hidden"></section><p class="muted" style="text-align:center">English vocabulary & reading practice</p></main><script>
+const BANK=[{"id": 1, "q": "As residential areas expand into protected forests, urban development continues to ______ natural habitats, leaving wildlife with less space to survive.", "a": ["encroach upon", "originate from", "engage with", "place reliance on"]}, {"id": 2, "q": "The company's rapid expansion has come ______ employee well-being, as workers are now required to work longer hours with fewer breaks.", "a": ["at the expense of", "in addition to", "in accordance with", "with regard to"]}, {"id": 3, "q": "The permanent departure of highly qualified doctors and engineers to wealthier countries has resulted in a serious ______ in several developing nations.", "a": ["brain drain", "sense of community", "benefits package", "trade-off"]}, {"id": 4, "q": "The city plans to expand its public transport network to ______ the needs of its rapidly growing population.", "a": ["accommodate", "disregard", "intensify", "erode"]}, {"id": 5, "q": "Removing trees from areas already vulnerable to flooding is likely to ______ the problem by increasing surface runoff.", "a": ["exacerbate", "mitigate", "exemplify", "overlook"]}, {"id": 6, "q": "Small family-owned businesses are considered ______ the rural economy because they provide most local employment and essential services.", "a": ["the backbone of", "a threat to", "a burden on", "an obstacle to"]}, {"id": 7, "q": "The sharp increase in respiratory illnesses among children ______ the urgent need to improve air quality in major cities.", "a": ["underscores", "mitigates", "accommodates", "disregards"]}, {"id": 8, "q": "In addition to a competitive salary, the company offers health insurance, paid holidays and retirement contributions as part of an attractive ______.", "a": ["benefits package", "pay raise", "job vacancy", "training course"]}, {"id": 9, "q": "Under the new workplace regulations, employees who deliberately violate safety rules may ______ accidents directly caused by their actions.", "a": ["be held responsible for", "be enthusiastic about", "be congratulated on", "be provided with"]}, {"id": 10, "q": "Measles is classified as a highly ______ disease because it can easily spread from an infected person to others.", "a": ["communicable", "communicative", "conventional", "complementary"]}, {"id": 11, "q": "Despite having clear evidence of illegal waste disposal, the factory manager deliberately chose to ______ the problem instead of reporting it to the authorities.", "a": ["turn a blind eye to", "draw attention to", "take responsibility for", "put an end to"]}, {"id": 12, "q": "Despite suffering severe damage from repeated natural disasters, the local community has demonstrated remarkable ______ by rebuilding homes and restoring essential services.", "a": ["resilience", "reluctance", "displacement", "indifference"]}, {"id": 13, "q": "Following the retirement of its financial director, the company has advertised the position in an attempt to ______.", "a": ["fill a vacancy", "make a donation", "reduce its workforce", "undergo training"]}, {"id": 14, "q": "A fair recruitment process should assess candidates according to their qualifications rather than offer ______ to applicants simply because they are related to senior managers.", "a": ["preferential treatment", "professional development", "overtime pay", "unemployment benefits"]}, {"id": 15, "q": "A detailed cost-benefit analysis shows that the financial savings generated by the project over twenty years will ______ its initial costs.", "a": ["outweigh", "disrupt", "accumulate", "contaminate"]}, {"id": 16, "q": "Having never used the new laboratory equipment before, all newly recruited technicians are required to ______ its safe operation before working independently.", "a": ["undergo training in", "disregard", "show reluctance towards", "turn a blind eye to"]}, {"id": 17, "q": "The construction of a large dam resulted in the forced ______ of thousands of residents, who had to leave their homes and settle elsewhere.", "a": ["displacement", "implementation", "recruitment", "flexibility"]}, {"id": 18, "q": "Instead of receiving a fixed monthly salary, the temporary workers are paid an hourly ______ based on the number of hours they work.", "a": ["wage", "donation", "benefit", "pension"]}, {"id": 19, "q": "Choose the option that best fits blank (19).", "a": ["conscientious", "reluctant", "careless", "indifferent"]}, {"id": 20, "q": "Choose the option that best fits blank (20).", "a": ["on-the-job", "classroom-based", "theoretical", "recreational"]}, {"id": 21, "q": "Choose the option that best fits blank (21).", "a": ["supervision", "supervise", "supervisor", "supervised"]}, {"id": 22, "q": "Choose the option that best fits blank (22).", "a": ["about", "with", "for", "to"]}, {"id": 23, "q": "Choose the option that best fits blank (23).", "a": ["preferential", "conventional", "medical", "complementary"]}, {"id": 24, "q": "Choose the option that best fits blank (24).", "a": ["vacancies", "donations", "qualifications", "allowances"]}, {"id": 25, "q": "Choose the option that best fits blank (25).", "a": ["biodiversity", "infrastructure", "migration", "industrialisation"]}, {"id": 26, "q": "Choose the option that best fits blank (26).", "a": ["contaminated", "sustainable", "conventional", "recreational"]}, {"id": 27, "q": "Choose the option that best fits blank (27).", "a": ["mitigate", "intensify", "aggravate", "accumulate"]}, {"id": 28, "q": "Choose the option that best fits blank (28).", "a": ["equitable", "exclusive", "unequal", "discriminatory"]}, {"id": 29, "q": "Choose the option that best fits blank (29).", "a": ["implementation", "implement", "implemented", "implements"]}, {"id": 30, "q": "Choose the option that best fits blank (30).", "a": ["to", "for", "with", "at"]}, {"id": 31, "q": "Where in paragraph 2 does the following sentence best fit? “This loss of skilled human resources can directly reduce agricultural productivity and limit opportunities for rural innovation.”", "a": ["[III]", "[I]", "[II]", "[IV]"]}, {"id": 32, "q": "The phrase “at the expense of” in paragraph 1 could be best replaced by ______.", "a": ["to the detriment of", "with the support of", "in accordance with", "for the benefit of"]}, {"id": 33, "q": "The phrase “these individuals” in paragraph 2 refers to ______.", "a": ["educated young people who relocate to cities", "owners of traditional rural businesses", "employees working in urban factories", "residents who remain in rural communities"]}, {"id": 34, "q": "According to paragraph 2, which of the following is NOT mentioned as a consequence of urbanisation in rural areas?", "a": ["A reduction in the quality of healthcare services.", "The loss of educated young people.", "The closure of local businesses.", "The weakening of community relationships."]}, {"id": 35, "q": "The word “exacerbate” in paragraph 3 is OPPOSITE in meaning to ______.", "a": ["mitigate", "aggravate", "intensify", "worsen"]}, {"id": 36, "q": "Which of the following best paraphrases the underlined sentence in paragraph 3?", "a": ["Failure to consider environmental damage now may result in higher financial costs for future generations.", "Addressing environmental damage now is likely to place a greater financial burden on future generations.", "Future generations will certainly face financial difficulties regardless of current environmental decisions.", "Postponing environmental protection measures may help future generations reduce their financial expenses."]}, {"id": 37, "q": "Which of the following best summarises paragraph 4?", "a": ["Sustainable urban planning can reduce environmental damage and strengthen the ability of communities to cope with challenges.", "Environmental protection depends primarily on preventing further urban expansion and population growth.", "Conventional infrastructure remains the most effective means of addressing environmental problems in growing cities.", "Urban development can become sustainable only when governments prioritise environmental protection over all economic activities."]}, {"id": 38, "q": "Which of the following is TRUE according to the passage?", "a": ["Equitable urban policies can help ensure that people have access to essential services regardless of their income.", "Economic benefits resulting from urbanisation are distributed equally among people from different social backgrounds.", "Conventional infrastructure necessarily provides sufficient solutions to the long-term problems of urban expansion.", "The involvement of local communities in urban planning is unnecessary when governments have sufficient financial resources."]}, {"id": 39, "q": "Which of the following can be inferred from the passage?", "a": ["Assessing the success of urban development solely in economic terms may conceal significant social and environmental costs.", "Rural communities can maintain their economic potential only by preventing educated residents from moving to cities.", "Economic growth and environmental protection are fundamentally incompatible in rapidly developing cities.", "Governments should abandon urban development projects whenever they are likely to produce environmental problems."]}, {"id": 40, "q": "Which of the following best summarises the passage?", "a": ["Although urbanisation creates economic opportunities, its social and environmental challenges require sustainable, equitable and comprehensive management.", "Urbanisation primarily benefits rural communities by creating employment opportunities and preserving traditional social relationships.", "The environmental and social disadvantages of urbanisation make it necessary for governments to prevent further urban expansion.", "Investment in conventional infrastructure is sufficient to ensure that the economic benefits of urbanisation outweigh its environmental disadvantages."]}]; const PASSAGES=["START YOUR CAREER WITH BRIGHT FUTURE!\nAre you looking for a rewarding career with excellent job prospects? Bright Future is currently recruiting talented individuals who are eager to develop their professional skills in a supportive working environment.\nWe are seeking (19) ______ employees who take their duties seriously, pay close attention to detail and consistently complete their tasks to a high standard.\nSuccessful candidates will receive (20) ______ training, enabling them to acquire practical skills while carrying out their actual duties in the workplace.\nDuring the first three months, new employees will work under the (21) ______ of experienced managers to ensure that they become familiar with company procedures.\nWhat do we offer?\n• Competitive salaries and an attractive benefits package.\n• Flexible working hours and opportunities for career advancement.\n• Regular training programmes to improve professional and organisational skills.\n• A friendly and inclusive working environment.\nWe particularly welcome applicants who are enthusiastic (22) ______ learning new skills and taking on challenging assignments.\nCandidates will be selected entirely on the basis of their qualifications and abilities. No applicant will receive (23) ______ treatment simply because of personal relationships with senior managers.\nIf you are ready to take the next step in your career, submit your application today. We currently have several (24) ______ that need to be filled before the beginning of next month.", "GREENER CITIES, HEALTHIER COMMUNITIES!\nRapid urbanisation has brought about profound changes in the way people live. Although urban development creates employment opportunities and improves standards of living, uncontrolled expansion can have serious consequences for both the environment and human well-being.\nUnderstanding the challenges\nThe destruction of natural habitats threatens numerous plant and animal species, leading to a significant decline in (25) ______.\nMeanwhile, chemicals released from factories can accumulate in rivers and lakes, leaving the water severely (26) ______ and unsafe for human consumption.\nTaking practical action\n• Protect green spaces: Plant more trees and preserve existing forests to (27) ______ the harmful effects of air pollution.\n• Choose sustainable transport: Use public transport or cycle whenever possible to reduce carbon emissions.\n• Support local communities: Purchase locally produced goods to help maintain employment and strengthen community relationships.\n• Promote social fairness: Advocate an (28) ______ distribution of public resources so that people from different economic backgrounds have fair access to essential services.\nWorking together for a better future\nThe successful (29) ______ of environmental policies requires close cooperation between governments, businesses and local residents.\nRather than turning a blind eye (30) ______ environmental problems, we should acknowledge their seriousness and take immediate action.\nEvery individual contribution matters. Together, we can build cleaner, healthier and more sustainable communities for future generations.", "URBANISATION: PROGRESS AT WHAT COST?\nUrbanisation has become one of the defining phenomena of the modern world. Driven largely by industrialisation and the search for better job prospects, the migration of people from rural areas to cities has brought about profound social and economic transformations. While urban growth has improved standards of living for millions, its benefits have not been distributed equally. In many cases, economic progress has come at the expense of environmental sustainability and social well-being.\n[I] One of the most significant consequences of urbanisation is the decline of rural communities. [II] As educated young people relocate to major cities in search of employment, rural areas may experience a brain drain. [III] The departure of these individuals can also contribute to the closure of local businesses, which have traditionally formed the backbone of rural economies. [IV] Over time, such developments may erode the sense of community that once characterised these regions.\nEnvironmental concerns are equally pressing. As cities expand, construction projects increasingly encroach upon natural habitats, disrupt ecosystems and diminish biodiversity. Furthermore, industrial waste and vehicle emissions can exacerbate existing environmental problems. Although conventional infrastructure may accommodate a growing population in the short term, it does not necessarily address the long-term consequences of uncontrolled urban expansion. <u>Overlooking these environmental costs today may place a considerably greater financial burden on future generations.</u>\nNevertheless, a growing body of evidence suggests that urbanisation does not necessarily have to undermine environmental protection. Forward-looking governments are beginning to advocate more sustainable approaches to urban development. These include expanding public transport networks, preserving recreational spaces and embedding environmental considerations into urban planning. Such measures can mitigate environmental damage while improving the resilience of urban communities.\nAnother essential consideration is social equity. Urban policies should ensure that economic opportunities and public services are accessible to all residents, regardless of their income or social background. Without equitable policies, urban development may intensify existing inequalities and result in the displacement of vulnerable groups. Governments should therefore engage with a wide range of stakeholders, including local residents, businesses and environmental organisations, before implementing major development projects.\nUltimately, the challenge is not to prevent urbanisation but to manage it holistically. Economic growth, environmental protection and social well-being should be regarded as complementary rather than competing objectives. Only through careful planning and collective responsibility can societies maximise the long-term benefits of urban development while minimising its potential drawbacks."];
+const $=id=>document.getElementById(id); const KEY='english-challenge-40-v2'; const letters='ABCD';
+function shuffle(arr){let x=[...arr];for(let i=x.length-1;i>0;i--){let j=Math.floor(Math.random()*(i+1));[x[i],x[j]]=[x[j],x[i]]}return x}
+function makeOrder(){return [...shuffle(BANK.slice(0,18)),...BANK.slice(18,30),...shuffle(BANK.slice(30))].map(q=>({id:q.id,options:shuffle([0,1,2,3])}))}
+let state=null, tick=null, lastPassage=-2;
+function save(){try{localStorage.setItem(KEY,JSON.stringify(state))}catch(e){}}
+function load(){try{return JSON.parse(localStorage.getItem(KEY))}catch(e){return null}}
+function render(){let i=state.index, item=state.order[i], q=BANK[item.id-1], p=item.id<=18?-1:item.id<=24?0:item.id<=30?1:2; $('student').textContent=state.name+(state.className?' • '+state.className:''); $('part').textContent=['PART 1 — Vocabulary in Context','PART 2 — Guided Cloze: Advertisement','PART 3 — Guided Cloze: Leaflet','PART 4 — Reading Comprehension'][p+1]; if(p!==lastPassage){$('passage').innerHTML=p<0?'':PASSAGES[p];$('passage').scrollTop=0;lastPassage=p} $('layout').classList.toggle('reading',p>=0); $('question').textContent='Câu '+(i+1)+'. '+q.q; $('options').replaceChildren(); item.options.forEach((opt,k)=>{let l=document.createElement('label'),input=document.createElement('input');input.type='radio';input.name='answer';input.checked=state.answers[item.id]===opt;input.onchange=()=>{state.answers[item.id]=opt;save();progress()};l.append(input,document.createTextNode(letters[k]+'. '+q.a[opt]));$('options').append(l)});$('prev').disabled=i===0;$('next').disabled=i===39;progress()}
+function progress(){let n=Object.keys(state.answers).length;$('counter').textContent='Câu '+(state.index+1)+' / 40';$('answered').textContent='Đã trả lời: '+n+' / 40';$('progressFill').style.width=n/40*100+'%';$('switches').textContent='Rời tab: '+state.switches+'/3';$('palette').replaceChildren();state.order.forEach((q,i)=>{let b=document.createElement('button');b.textContent=i+1;b.className=(state.answers[q.id]!==undefined?'done ':'')+(i===state.index?'current':'');b.onclick=()=>go(i);$('palette').append(b)})}
+function go(i){if(!state||state.finished)return;state.index=Math.max(0,Math.min(39,i));save();render()}
+function clock(){if(!state||state.finished)return;let s=Math.max(0,Math.ceil((state.deadline-Date.now())/1000));$('timer').textContent='⏳ '+String(Math.floor(s/60)).padStart(2,'0')+':'+String(s%60).padStart(2,'0');if(!s)finish('Hết thời gian')}
+function enter(){$('start').classList.add('hidden');$('exam').classList.remove('hidden');render();clock();if(!state.finished)tick=setInterval(clock,250)}
+$('startBtn').onclick=()=>{let name=$('username').value.trim();if(!name){alert('Vui lòng nhập họ và tên.');return}state={name,className:$('className').value.trim(),order:makeOrder(),answers:{},index:0,switches:0,deadline:Date.now()+50*60000,finished:false};save();enter()};
+$('prev').onclick=()=>go(state.index-1);$('next').onclick=()=>go(state.index+1);$('submit').onclick=()=>{let n=Object.keys(state.answers).length;if(n<40){go(state.order.findIndex(q=>state.answers[q.id]===undefined));alert('Bạn còn '+(40-n)+' câu chưa trả lời.');return}if(confirm('Bạn chắc chắn muốn nộp bài?'))finish('Đã nộp bài')};
+function finish(reason){if(state.finished)return;state.finished=true;state.reason=reason;state.correct=BANK.filter(q=>state.answers[q.id]===0).length;state.ended=new Date().toISOString();save();clearInterval(tick);showResult();sendResult()}
+function showResult(){$('start').classList.add('hidden');$('exam').classList.add('hidden');let el=$('result');el.classList.remove('hidden');el.replaceChildren();let add=(tag,t,cls)=>{let x=document.createElement(tag);x.textContent=t;if(cls)x.className=cls;el.append(x)};add('h2','✅ '+state.reason);add('p',state.name+(state.className?' • '+state.className:''));add('div',(state.correct/4).toFixed(2)+' / 10','score');add('p','Đúng: '+state.correct+'/40 • Chưa trả lời: '+(40-Object.keys(state.answers).length));add('p','Số lần rời tab: '+state.switches);add('p','Không hiển thị đáp án.','muted');let delivery=document.createElement('p');delivery.id='deliveryStatus';delivery.className='muted';el.append(delivery);let retry=document.createElement('button');retry.id='retryDelivery';retry.textContent='Gửi lại kết quả';retry.className='hidden';retry.onclick=sendResult;el.append(retry);updateDelivery();let btn=document.createElement('button');btn.textContent='Tải phiếu kết quả';btn.onclick=()=>{let content='ENGLISH CHALLENGE\nHọ tên: '+state.name+'\nLớp: '+state.className+'\nĐiểm: '+(state.correct/4).toFixed(2)+'/10\nSố câu đúng: '+state.correct+'/40\nRời tab: '+state.switches+'\nThời điểm: '+state.ended+'\nTrạng thái: '+state.reason;let url=URL.createObjectURL(new Blob([content],{type:'text/plain;charset=utf-8'}));let a=document.createElement('a');a.href=url;a.download='ket-qua.txt';a.click();setTimeout(()=>URL.revokeObjectURL(url),1000)};el.append(btn);let again=document.createElement('button');again.id='retryQuiz';again.textContent='🔄 Làm lại bài';again.onclick=restartQuiz;el.append(again);updateDelivery()}
+document.addEventListener('visibilitychange',()=>{if(!state||state.finished)return;if(document.hidden){state.switches++;save();if(state.switches>=3)finish('Tự nộp do rời tab 3 lần')}else{clock();if(!state.finished){progress();alert('Cảnh báo: Bạn đã rời tab '+state.switches+'/3 lần.')}}});
+
+const ENDPOINT='https://script.google.com/macros/s/AKfycbwKGHpjJy1RxNpGRIHdZtQiPfCrh0OSG24DEzQtRB7Ezlr1aki97aZL0JfQiSwkKmYmrg/exec';
+let sending=false;
+function buildPayload(s){
+  const wrong=s.order.flatMap((item,i)=>{
+    const q=BANK[item.id-1], chosen=s.answers[item.id];
+    if(chosen===0)return [];
+    const correct=letters[item.options.indexOf(0)]+'. '+q.a[0];
+    const your=chosen===undefined?'Chưa trả lời':letters[item.options.indexOf(chosen)]+'. '+q.a[chosen];
+    let question=q.q;
+    if(q.id>=19&&q.id<=30){const passage=PASSAGES[q.id<=24?0:1];question=passage.split('\n').find(line=>line.includes('('+q.id+') ______'))||q.q;}
+    return [`Câu ${i+1} (mã gốc ${q.id}). ${question} | Bạn chọn: ${your} | Đúng: ${correct}`];
+  });
+  return {time:new Date(s.ended).toLocaleString('vi-VN',{timeZone:'Asia/Ho_Chi_Minh'}),name:s.name,score:s.correct,total:BANK.length,tabSwitch:s.switches||0,wrong:wrong.join('\n')};
+}
+function restartQuiz(){
+  if(!state?.finished||sending)return;
+  if(state.delivery!=='sent'&&!confirm('Kết quả lượt trước chưa được xác nhận gửi thành công. Bạn có muốn làm lại ngay không?'))return;
+  if(state.delivery==='sent'&&!confirm('Bắt đầu lượt làm bài mới?'))return;
+  const name=state.name, className=state.className;
+  clearInterval(tick);tick=null;lastPassage=-2;
+  state={name,className,order:makeOrder(),answers:{},index:0,switches:0,deadline:Date.now()+50*60000,finished:false};
+  $('result').classList.add('hidden');$('result').replaceChildren();
+  save();enter();window.scrollTo(0,0);
+}
+function updateDelivery(){
+  const el=$('deliveryStatus'),retry=$('retryDelivery');if(!el||!retry)return;
+  const status=state.delivery;
+  el.textContent=sending?'Đang gửi kết quả về giáo viên…':status==='sent'?'Đã gửi kết quả về hệ thống giáo viên.':status==='failed'?'Chưa xác nhận gửi thành công. Hãy kiểm tra mạng và báo giáo viên trước khi gửi lại.':status==='pending'?'Lần gửi trước chưa được xác nhận. Hãy báo giáo viên trước khi gửi lại.':'Kết quả đang chờ gửi.';
+  retry.classList.toggle('hidden',sending||status==='sent'||!status);const again=$('retryQuiz');if(again){again.disabled=sending;again.style.opacity=sending?'0.5':'1';again.style.cursor=sending?'wait':'pointer';}
+}
+async function sendResult(){
+  if(!state?.finished||sending||state.delivery==='sent')return;
+  sending=true;state.delivery='pending';save();updateDelivery();
+  try{
+    const response=await fetch(ENDPOINT,{method:'POST',headers:{'Content-Type':'text/plain;charset=UTF-8'},body:JSON.stringify(buildPayload(state)),signal:AbortSignal.timeout(20000)});
+    if(!response.ok)throw new Error('HTTP '+response.status);
+    state.delivery='sent';
+  }catch(e){state.delivery='failed';console.warn('Result delivery not confirmed:',e)}
+  finally{sending=false;save();updateDelivery()}
+}
+
+state=load();if(state&&state.order?.length===40){if(state.finished){showResult();if(!state.delivery)sendResult()}else enter()}else state=null;
+</script></body></html>
